@@ -1,0 +1,25 @@
+.workout-form-container { max-width: 600px; padding: 2rem 15px; }
+.form-header { margin-bottom: 2rem; }
+.btn-back { background: none; border: none; color: #27ae60; cursor: pointer; padding: 0; margin-bottom: 10px; }
+
+.card-form { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+
+.field { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
+.field label { font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; color: #444; }
+.field input, .field textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+.btn-submit {
+  width: 100%;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.btn-submit:disabled { background-color: #bdc3c7; }

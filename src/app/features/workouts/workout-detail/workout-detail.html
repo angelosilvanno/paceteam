@@ -1,1 +1,50 @@
-<p>workout-detail works!</p>
+<div class="container" *ngIf="treino">
+  <div class="detail-header">
+    <button routerLink="/treinos" class="btn-back">← Todos os treinos</button>
+  </div>
+
+  <div class="grid-detail">
+    <div class="main-info">
+      <div class="card-large">
+        <span class="badge">{{ treino.distancia }}km</span>
+        <h1>{{ treino.local }}</h1>
+        <p class="organizador">Organizado por <strong>{{ treino.organizador }}</strong></p>
+        
+        <div class="meta-data">
+          <div class="item">
+            <span class="label">Data e Hora</span>
+            <span class="value">{{ treino.data }} às {{ treino.hora }}</span>
+          </div>
+          <div class="item">
+            <span class="label">Pace Alvo</span>
+            <span class="value">{{ treino.paceSugerido }} min/km</span>
+          </div>
+        </div>
+
+        <div class="description">
+          <h3>Sobre este treino</h3>
+          <p>{{ treino.descricao }}</p>
+        </div>
+
+        <button class="btn-main-join">Confirmar Presença</button>
+      </div>
+    </div>
+
+    <div class="participants-info">
+      <div class="card-small">
+        <h3>Participantes ({{ treino.participantes }})</h3>
+        <div class="avatar-list">
+          <!-- Mock de participantes -->
+          <div class="user-row">
+            <img src="https://i.pravatar.cc/150?u=1" class="mini-avatar">
+            <span>Marcos Silva</span>
+          </div>
+          <div class="user-row">
+            <img src="https://i.pravatar.cc/150?u=2" class="mini-avatar">
+            <span>Ana Costa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

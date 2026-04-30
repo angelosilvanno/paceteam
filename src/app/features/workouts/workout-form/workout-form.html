@@ -1,1 +1,43 @@
-<p>workout-form works!</p>
+<div class="container workout-form-container">
+  <div class="form-header">
+    <button routerLink="/treinos" class="btn-back">← Voltar</button>
+    <h1>Convoque o Time</h1>
+    <p>Defina os detalhes do treino para atrair parceiros compatíveis.</p>
+  </div>
+
+  <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()" class="card-form">
+    <div class="field">
+      <label>Local de Encontro</label>
+      <input type="text" formControlName="local" placeholder="Ex: Portão 7 do Parque">
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Data</label>
+        <input type="date" formControlName="data">
+      </div>
+      <div class="field">
+        <label>Horário</label>
+        <input type="time" formControlName="hora">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Distância (km)</label>
+        <input type="number" formControlName="distancia" placeholder="Ex: 10">
+      </div>
+      <div class="field">
+        <label>Pace Alvo (min/km)</label>
+        <input type="text" formControlName="paceSugerido" placeholder="Ex: 5:30">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Descrição/Observações</label>
+      <textarea formControlName="descricao" rows="3" placeholder="Dê mais detalhes sobre o percurso..."></textarea>
+    </div>
+
+    <button type="submit" [disabled]="workoutForm.invalid" class="btn-submit">Publicar Treino</button>
+  </form>
+</div>

@@ -1,1 +1,33 @@
-<p>profile works!</p>
+<div class="container profile-container">
+  <div class="profile-header">
+    <div class="cover"></div>
+    <img [src]="user.foto" class="profile-pic">
+    <h1>{{ user.nome }}</h1>
+    <p>{{ user.objetivo }}</p>
+  </div>
+
+  <div class="profile-details">
+    <div class="detail-card">
+      <h3>⚡ Pace Médio</h3>
+      <p>{{ user.paceMedio }} min/km</p>
+    </div>
+    <div class="detail-card">
+      <h3>📅 Disponibilidade</h3>
+      <ul>
+        @for (dia of user.dias; track dia) {
+          <li>{{ dia }}</li>
+        }
+      </ul>
+    </div>
+    <div class="detail-card">
+      <h3>🛣️ Distâncias Favoritas</h3>
+      <div class="tags">
+        @for (dist of user.distancias; track dist) {
+          <span class="tag">{{ dist }}</span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-edit-profile">Editar Meu Perfil</button>
+</div>

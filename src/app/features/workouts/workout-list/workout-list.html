@@ -1,1 +1,26 @@
-<p>workout-list works!</p>
+<div class="container">
+  <div class="header-list">
+    <h1>Próximos Treinos Coletivos</h1>
+    <p>Encontre o treino ideal para o seu pace hoje.</p>
+  </div>
+
+  <div class="workout-grid">
+    @for (treino of treinos; track treino.id) {
+      <div class="workout-card">
+        <div class="distancia-badge">{{ treino.distancia }}km</div>
+        <div class="card-body">
+          <h3>{{ treino.local }}</h3>
+          <div class="info-row">
+            <span>📅 {{ treino.data }} às {{ treino.hora }}</span>
+            <span>⏱️ Pace: <strong>{{ treino.paceSugerido }}</strong></span>
+          </div>
+          <div class="footer-card">
+            <span class="organizador">Por: {{ treino.organizador }}</span>
+            <span class="participantes">👥 {{ treino.participantes }} inscritos</span>
+          </div>
+          <button (click)="participar(treino.id)" class="btn-join">Participar</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

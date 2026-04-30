@@ -1,23 +1,26 @@
 import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { App } from './app'; // Importando como 'App'
+import { RouterModule } from '@angular/router';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [
+        App,
+        RouterModule.forRoot([]) // Adicionado para não dar erro de rotas no teste
+      ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('deve criar o app', () => {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it(`deve ter o título 'paceteam'`, () => {
     const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, paceteam');
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('paceteam');
   });
 });

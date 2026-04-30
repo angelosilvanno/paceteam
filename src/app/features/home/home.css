@@ -1,0 +1,31 @@
+.hero {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+              url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+}
+
+h1 { font-size: 3rem; color: #2c3e50; margin-bottom: 1rem; }
+h1 span { color: #27ae60; }
+p { font-size: 1.2rem; color: #666; max-width: 600px; margin-bottom: 2rem; }
+
+.actions { display: flex; gap: 1rem; }
+
+button {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.main-btn { background-color: #27ae60; color: white; }
+.main-btn:hover { background-color: #219150; }
+.sec-btn { background-color: #34495e; color: white; }

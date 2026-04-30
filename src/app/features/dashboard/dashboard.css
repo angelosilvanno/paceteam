@@ -1,0 +1,66 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 2rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card de Perfil à esquerda */
+.profile-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.avatar { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 1rem; border: 3px solid #27ae60; }
+.pace-info { font-size: 1.1rem; margin-bottom: 1.5rem; }
+.btn-edit { background: none; color: #27ae60; border: 1px solid #27ae60; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }
+
+/* Grid de Sugestões */
+.runner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.runner-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.runner-card img { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 0.5rem; }
+.pace-badge { background: #e8f5e9; color: #27ae60; padding: 0.2rem 0.8rem; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
+.goal { font-size: 0.8rem; color: #777; margin: 0.8rem 0; }
+.btn-connect { background: #27ae60; color: white; border: none; padding: 0.5rem; width: 100%; border-radius: 5px; cursor: pointer; }
+
+/* Lista de Treinos */
+.quick-workouts { margin-top: 3rem; }
+.header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.btn-new { background: #34495e; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; }
+
+.workout-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.workout-info strong { display: block; font-size: 1.1rem; color: #2c3e50; }
+.workout-info span { color: #888; font-size: 0.9rem; }
+.btn-join { background: #27ae60; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 5px; cursor: pointer; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .dashboard-container { grid-template-columns: 1fr; }
+}

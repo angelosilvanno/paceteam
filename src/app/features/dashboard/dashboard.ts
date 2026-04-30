@@ -1,9 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { RunnerService, Corredor } from '../../core/services/runner';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  styleUrl: './dashboard.css'
 })
-export class Dashboard {}
+export class Dashboard implements OnInit {
+  meuPace = 5.3; 
+  sugestoes: Corredor[] = [];
+
+  constructor(private runnerService: RunnerService) {}
+
+  ngOnInit() {
+    this.sugestoes = this.runnerService.buscarCompativeis(this.meuPace);
+  }
+}

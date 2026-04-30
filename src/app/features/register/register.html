@@ -1,1 +1,52 @@
-<p>register works!</p>
+<div class="register-container">
+  <div class="register-card">
+    <h2>Crie seu perfil de <span>corredor</span></h2>
+    <p>Preencha os dados para encontrarmos parceiros compatíveis.</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+      <div class="form-group">
+        <label>Nome Completo</label>
+        <input type="text" formControlName="nome" placeholder="Seu nome">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Pace Médio (min/km)</label>
+          <input type="text" formControlName="paceMedio" placeholder="Ex: 5:30">
+        </div>
+        <div class="form-group">
+          <label>Distâncias (km)</label>
+          <input type="text" formControlName="distancias" placeholder="Ex: 5, 10, 21">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Objetivo na Corrida</label>
+        <select formControlName="objetivo">
+          <option value="">Selecione um objetivo</option>
+          <option value="saude">Saúde e Bem-estar</option>
+          <option value="performance">Melhorar Performance</option>
+          <option value="maratona">Treinar para Prova</option>
+          <option value="social">Socializar</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" formControlName="email" placeholder="email@exemplo.com">
+      </div>
+
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" formControlName="senha" placeholder="Mínimo 6 caracteres">
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid" class="btn-register">
+        Finalizar Cadastro
+      </button>
+
+      <p class="login-link">Já tem conta? <a routerLink="/login">Entrar</a></p>
+    </form>
+  </div>
+</div>

@@ -1,1 +1,9 @@
-<p>navbar works!</p>
+<nav class="navbar">
+  <div class="logo" routerLink="/">Pace<span>Team</span></div>
+  <ul class="nav-links">
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+    <li><a routerLink="/treinos" routerLinkActive="active">Treinos</a></li>
+    <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+    <li><a routerLink="/login" class="login-btn">Entrar</a></li>
+  </ul>
+</nav>

@@ -1,7 +1,10 @@
-<!-- A Navbar vai aparecer em todas as páginas -->
+<!-- A Navbar vai aparecer no topo de todas as páginas -->
 <app-navbar></app-navbar>
 
-<!-- O Router Outlet é onde o conteúdo das rotas (Home, Login, etc) será carregado -->
-<main class="container">
+<!-- O main-wrapper garante que o conteúdo empurre o rodapé para baixo -->
+<main class="main-wrapper">
   <router-outlet></router-outlet>
 </main>
+
+<!-- O Rodapé vai aparecer no final de todas as páginas -->
+<app-footer></app-footer>

@@ -1,0 +1,110 @@
+.footer {
+  background-color: #121212; /* Um preto mais profundo e elegante */
+  color: #a0a0a0;
+  padding: 80px 0 30px;
+  margin-top: 100px;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+/* Logo e Texto de Apoio */
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.footer-logo span {
+  color: #27ae60;
+}
+
+.footer-box p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 300px;
+}
+
+/* Estilo das Listas (Removendo as bolinhas) */
+.footer-box h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.footer-box ul {
+  list-style: none; /* REMOVE AS BOLINHAS */
+  padding: 0;
+  margin: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 15px;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #a0a0a0;
+  transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #27ae60;
+}
+
+/* Rodapé de Baixo (Copyright e Sociais) */
+.footer-bottom {
+  border-top: 1px solid #222;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 25px; /* ESPAÇO ENTRE INSTAGRAM E STRAVA */
+}
+
+.social-tag {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: 0.3s;
+}
+
+.social-tag:hover {
+  color: #27ae60;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}

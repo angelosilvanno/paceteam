@@ -1,22 +1,29 @@
 <nav class="navbar">
   <div class="logo" routerLink="/">Pace<span>Team</span></div>
   
-  <ul class="nav-links">
-    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-    <li><a routerLink="/treinos" routerLinkActive="active">Treinos</a></li>
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a></li>
+      <li><a routerLink="/treinos" routerLinkActive="active">Explorar Treinos</a></li>
+      
+      <li *ngIf="user$ | async"><a routerLink="/dashboard" routerLinkActive="active">Meu Painel</a></li>
+    </ul>
 
-    <!-- Se não estiver logado -->
-    <li *ngIf="!(user$ | async)">
-      <a routerLink="/login" class="login-btn">Entrar</a>
-    </li>
-
-    <!-- Se estiver logado -->
-    <ng-container *ngIf="user$ | async as user">
-      <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-      <li class="user-section">
-        <div class="divider"></div>
-        <span class="welcome-text">Olá, <strong>{{ user.nome }}</strong></span>
-        <button (click)="logout()" class="logout-btn">Sair</button>
+    <div class="nav-actions">
+      <ng-container *ngIf="!(user$ | async)">
+        <a routerLink="/login" class="btn-login-text">Entrar</a>
+        <a routerLink="/cadastro" class="btn-signup-pill">Começar Agora</a>
       </ng-container>
-  </ul>
+
+      <div class="user-logged" *ngIf="user$ | async as user">
+        <div class="user-profile" routerLink="/perfil">
+          <span class="user-name">{{ user.nome }}</span>
+          <img [src]="user.foto || 'https://i.pravatar.cc/150?u=a'" class="nav-avatar">
+        </div>
+        <button (click)="logout()" class="btn-logout-icon" title="Sair">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </nav>

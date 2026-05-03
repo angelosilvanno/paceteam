@@ -11,8 +11,10 @@ export class AuthService {
     const mockUser = {
       nome: userData.nome || userData.email.split('@')[0], 
       email: userData.email,
-      pace: 5.5,
-      foto: 'https://i.pravatar.cc/150?u=angelo'
+      pace: userData.paceMedio || 5.5,
+      foto: 'https://i.pravatar.cc/150?u=angelo',
+      distancias: userData.distancias ? [userData.distancias] : ['5km', '10km'],
+      dias: userData.diasDisponiveis ? [userData.diasDisponiveis] : ['Segunda', 'Quarta', 'Sexta']
     };
     this.userSubject.next(mockUser); 
   }

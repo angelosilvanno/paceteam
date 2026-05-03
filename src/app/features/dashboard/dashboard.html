@@ -1,46 +1,39 @@
 <div class="dashboard-container">
   
-  <aside class="profile-summary">
+  <aside class="profile-sidebar">
     <div class="profile-card">
-      <img src="https://i.pravatar.cc/150?u=me" alt="Minha Foto" class="avatar">
-      <h3>Seu Perfil</h3>
-      <p class="pace-info">Pace: <strong>{{ meuPace }} min/km</strong></p>
-      <button routerLink="/perfil" class="btn-edit">Ver Perfil Completo</button>
+      <div class="avatar-wrapper">
+        <img src="https://i.pravatar.cc/150?u=me" alt="Sua foto" class="avatar">
+        <div class="status-online"></div>
+      </div>
+      
+      <!-- EXIBIÇÃO DO NOME DO USUÁRIO -->
+      <h3>{{ user?.nome }}</h3>
+      <p class="user-role">Atleta PaceTeam</p>
+      
+      <div class="pace-display">
+        <span class="label">Meu Ritmo</span>
+        <span class="value">{{ meuPace }} <span>min/km</span></span>
+      </div>
+
+      <button routerLink="/perfil" class="btn-full-profile">Ver Perfil Completo</button>
     </div>
   </aside>
 
-  <main class="main-content">
-    
-    <section class="suggestions">
+  <main class="dashboard-main">
+    <header class="main-header">
       <h2>Corredores Compatíveis 🏃‍♂️</h2>
-      <p>Pessoas com ritmo parecido com o seu (diferença de até 30s):</p>
-      
-      <div class="runner-grid">
-        <div class="runner-card" *ngFor="let runner of sugestoes">
-          <img [src]="runner.foto" alt="{{ runner.nome }}">
-          <h4>{{ runner.nome }}</h4>
-          <span class="pace-badge">{{ runner.pace }} min/km</span>
-          <p class="goal">{{ runner.objetivo }}</p>
-          <button class="btn-connect">Convidar para Treino</button>
-        </div>
-      </div>
-    </section>
+      <p>Estes atletas correm em um ritmo próximo ao seu.</p>
+    </header>
 
-    <section class="quick-workouts">
-      <div class="header-row">
-        <h2>Treinos Disponíveis</h2>
-        <button routerLink="/treinos/novo" class="btn-new">+ Criar Treino</button>
+    <div class="runner-grid">
+      <div class="runner-card" *ngFor="let runner of sugestoes">
+        <img [src]="runner.foto" alt="{{ runner.nome }}">
+        <h4>{{ runner.nome }}</h4>
+        <div class="pace-tag">{{ runner.pace }} min/km</div>
+        <p class="runner-goal">{{ runner.objetivo }}</p>
+        <button class="btn-action">Convidar para Treino</button>
       </div>
-      <div class="workout-list">
-        <div class="workout-item">
-          <div class="workout-info">
-            <strong>Parque Ibirapuera</strong>
-            <span>Amanhã, 07:00 • 10km • Pace 5:15</span>
-          </div>
-          <button class="btn-join">Participar</button>
-        </div>
-      </div>
-    </section>
-
+    </div>
   </main>
 </div>

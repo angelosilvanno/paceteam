@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { RunnerService, Corredor } from '../../core/services/runner';
+import { RunnerService } from '../../core/services/runner';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,12 +12,20 @@ import { RunnerService, Corredor } from '../../core/services/runner';
   styleUrl: './dashboard.css'
 })
 export class Dashboard implements OnInit {
-  meuPace = 5.3; 
-  sugestoes: Corredor[] = [];
+  private authService = inject(AuthService);
+  private runnerService = inject(RunnerService);
 
-  constructor(private runnerService: RunnerService) {}
+  user: any;
+  meuPace: number = 0; // Esta linha declara a variável e resolve o erro
+  sugestoes: any[] = [];
 
   ngOnInit() {
+    this.user = this.authService.getUserValue();
+    
+    // Pegamos o pace que vem do usuário logado
+    this.meuPace = this.user?.pace || 5.0;
+
+    // Buscamos as sugestões usando esse pace
     this.sugestoes = this.runnerService.buscarCompativeis(this.meuPace);
   }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'app-profile',
@@ -8,14 +9,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './profile.html',
   styleUrl: './profile.css'
 })
-export class Profile {
-  user = {
-    nome: 'Seu Nome de Corredor',
-    paceMedio: '5:30',
-    objetivo: 'Performance / Meia Maratona',
-    distancias: ['5km', '10km', '21km'],
-    dias: ['Segunda', 'Quarta', 'Sábado'],
-    email: 'atleta@paceteam.com',
-    foto: 'https://i.pravatar.cc/150?u=me'
-  };
+export class Profile implements OnInit {
+  private authService = inject(AuthService);
+  user: any;
+
+  ngOnInit() {
+    this.user = this.authService.getUserValue();
+    
+    if (this.user && !this.user.distancias) {
+      this.user.distancias = ['5km', '10km'];
+      this.user.dias = ['Segunda', 'Quarta', 'Sexta'];
+    }
+  }
 }

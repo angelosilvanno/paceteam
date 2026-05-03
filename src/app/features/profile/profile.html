@@ -1,33 +1,55 @@
-<div class="container profile-container">
-  <div class="profile-header">
-    <div class="cover"></div>
-    <img [src]="user.foto" class="profile-pic">
-    <h1>{{ user.nome }}</h1>
-    <p>{{ user.objetivo }}</p>
-  </div>
-
-  <div class="profile-details">
-    <div class="detail-card">
-      <h3>⚡ Pace Médio</h3>
-      <p>{{ user.paceMedio }} min/km</p>
-    </div>
-    <div class="detail-card">
-      <h3>📅 Disponibilidade</h3>
-      <ul>
-        @for (dia of user.dias; track dia) {
-          <li>{{ dia }}</li>
-        }
-      </ul>
-    </div>
-    <div class="detail-card">
-      <h3>🛣️ Distâncias Favoritas</h3>
-      <div class="tags">
-        @for (dist of user.distancias; track dist) {
-          <span class="tag">{{ dist }}</span>
-        }
+<div class="profile-page">
+  <div class="profile-container" *ngIf="user">
+    
+    <!-- Cabeçalho do Perfil -->
+    <header class="profile-header">
+      <div class="banner"></div>
+      <div class="header-content">
+        <div class="avatar-container">
+          <img [src]="user.foto || 'https://i.pravatar.cc/150?u=avatar'" alt="Foto de perfil">
+        </div>
+        <h1 class="user-name">{{ user.nome }}</h1>
+        <p class="user-bio">{{ user.objetivo || 'Corredor apaixonado pelo PaceTeam' }}</p>
       </div>
-    </div>
-  </div>
+    </header>
 
-  <button class="btn-edit-profile">Editar Meu Perfil</button>
+    <!-- Grid de Informações -->
+    <div class="info-grid">
+      
+      <div class="info-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-text">
+          <h3>Pace Médio</h3>
+          <p>{{ user.pace }} min/km</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="card-icon">📅</div>
+        <div class="card-text">
+          <h3>Disponibilidade</h3>
+          <ul>
+            <li *ngFor="let dia of user.dias">{{ dia }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="card-icon">🗺️</div>
+        <div class="card-text">
+          <h3>Distâncias</h3>
+          <div class="tags">
+            <span class="tag" *ngFor="let dist of user.distancias">{{ dist }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="profile-actions">
+      <button class="btn-edit">Editar Meu Perfil</button>
+      <p class="member-since">Membro desde Abril de 2024</p>
+    </footer>
+
+  </div>
 </div>

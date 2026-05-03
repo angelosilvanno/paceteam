@@ -1,19 +1,22 @@
 <nav class="navbar">
   <div class="logo" routerLink="/">Pace<span>Team</span></div>
+  
   <ul class="nav-links">
     <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
     <li><a routerLink="/treinos" routerLinkActive="active">Treinos</a></li>
-    
+
+    <!-- Se não estiver logado -->
     <li *ngIf="!(user$ | async)">
       <a routerLink="/login" class="login-btn">Entrar</a>
     </li>
-    
+
+    <!-- Se estiver logado -->
     <ng-container *ngIf="user$ | async as user">
       <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-      <li class="user-info">
-        <span>Olá, <strong>{{ user.nome }}</strong></span>
-        <button (click)="logout()" class="btn-logout">Sair</button>
-      </li>
-    </ng-container>
+      <li class="user-section">
+        <div class="divider"></div>
+        <span class="welcome-text">Olá, <strong>{{ user.nome }}</strong></span>
+        <button (click)="logout()" class="logout-btn">Sair</button>
+      </ng-container>
   </ul>
 </nav>

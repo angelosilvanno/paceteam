@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +13,13 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class Register {
   registerForm: FormGroup;
+  showSuccess = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.registerForm = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
       paceMedio: ['', [Validators.required]],
@@ -28,9 +34,12 @@ export class Register {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log('Dados do Corredor:', this.registerForm.value);
-      alert('Perfil criado com sucesso!');
-      this.router.navigate(['/dashboard']); // Redireciona após o cadastro
+      this.authService.login(this.registerForm.value);
+      this.showSuccess = true;
+      
+      setTimeout(() => {
+        this.router.navigate(['/dashboard']);
+      }, 1500);
     }
   }
 }
